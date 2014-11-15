@@ -16,7 +16,8 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'app/config/module.js',
       'app/**/*.js',
-      'test/unit/**/*.mocha.js'
+      'test/unit/**/*.mocha.js',
+      'test/integration/**/*.mocha.js'
     ],
 
     // list of files to exclude

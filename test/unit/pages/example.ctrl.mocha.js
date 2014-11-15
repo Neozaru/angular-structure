@@ -19,7 +19,7 @@ describe('example controller test', function() {
       }
     };
     mockExampleService = sinon.mock(stubService);
-    ctrl = $controller('ExampleCtrl', {$scope: scope, 'exampleService': stubService});
+    ctrl = $controller('exampleCtrl', {$scope: scope, 'exampleService': stubService});
   }));
 
   it('should have initial values', function(){

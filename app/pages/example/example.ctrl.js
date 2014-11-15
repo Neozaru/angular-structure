@@ -1,4 +1,4 @@
-NGMOD.ExampleCtrl = NGMOD.controller('ExampleCtrl', ['$scope', 'exampleService', function ($scope, exampleService) {
+NGMOD.ExampleCtrl = NGMOD.controller('exampleCtrl', ['$scope', 'exampleService', function ($scope, exampleService) {
     
     $scope.messages = [];
 
