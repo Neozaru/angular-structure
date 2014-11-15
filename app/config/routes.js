@@ -3,6 +3,6 @@ NGMOD.config(function($stateProvider, $urlRouterProvider, $injector) {
     .state('home', {
       url: '',
       templateUrl: "app/pages/example/example.html",
-      controller: "ExampleCtrl"
+      controller: "exampleCtrl"
   });
 });

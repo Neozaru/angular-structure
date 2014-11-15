@@ -1,0 +1,25 @@
+{
+  "name": "angular-structure",
+  "version": "0.0.1",
+  "description": "AngularJs project structure",
+  "devDependencies": {
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.6",
+    "karma-mocha": "^0.1.9",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon-chai": "^0.2.0",
+    "mocha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Neozaru/angular-structure.git"
+  },
+  "author": "Neozaru",
+  "license": "WTFPL",
+  "directories": {
+    "test": "test"
+  }
+}

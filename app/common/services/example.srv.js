@@ -8,6 +8,5 @@ NGMOD.config( function($provide) {
 	    };
 
 		return this;
-
 	})
 });
