@@ -2,7 +2,7 @@ describe('example controller test', function() {
 
   var scope;
   var ctrl;
-  var mockExampleService;
+  var stubService;
 
   beforeEach(module('ngResource'));
   beforeEach(module('ui.router'));
@@ -11,14 +11,21 @@ describe('example controller test', function() {
 
   beforeEach(inject(function($rootScope, $controller, $q) {
     scope = $rootScope.$new();
-    var stubService = {
-      retrieveMessage: function(name, from) {
-        return $q(function(resolve, reject) {
-          resolve({"message": "Hello to " + name + " from " + from});
-        });
-      }
+    stubService = {
+      ok: true
     };
-    mockExampleService = sinon.mock(stubService);
+    stubService.retrieveMessage = function(name, from) {
+      var _this = this;
+      return $q(function(resolve, reject) {
+        if (_this.ok) {
+          resolve({"message": "Hello to " + name + " from " + from});
+        }
+        else {
+          reject("Batman error");
+        }
+      });
+    };
+    
     ctrl = $controller('exampleCtrl', {$scope: scope, 'exampleService': stubService});
   }));
 
@@ -44,6 +51,15 @@ describe('example controller test', function() {
 
       expect(scope.messages).to.have.length(1);
       expect(scope.messages[0]).to.equal("Hello to New name from Neozaru");
+    });
+
+    it('should register errors', function() {
+      stubService.ok = false;
+      scope.getMessage();
+      scope.$digest();
+
+      expect(scope.messages).to.have.length(0);
+      expect(scope.lastError).to.equal("HTTP error : Batman error");
     });
 
   });
