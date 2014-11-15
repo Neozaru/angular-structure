@@ -4,7 +4,7 @@ describe('example service test', function() {
 
   beforeEach(module('myApp'));
 
-  beforeEach(inject(function($rootScope, $q) {
+  beforeEach(inject(function($rootScope) {
     inject(function($injector) {
       $httpBackend = $injector.get('$httpBackend');
       srv = $injector.get('exampleService');

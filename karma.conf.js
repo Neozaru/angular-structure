@@ -16,6 +16,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'app/config/module.js',
       'app/**/*.js',
+      'app/common/components/example_input/*.js',
       'test/unit/**/*.mocha.js',
       'test/integration/**/*.mocha.js'
     ],
