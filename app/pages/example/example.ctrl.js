@@ -1,10 +1,9 @@
-NGMOD.ExampleCtrl = NGMOD.controller('ExampleCtrl', function ($scope, exampleService) {
+NGMOD.ExampleCtrl = NGMOD.controller('ExampleCtrl', ['$scope', 'exampleService', function ($scope, exampleService) {
     
     $scope.messages = [];
 
     $scope.name = "foo";
     $scope.value = "My button label";
-
 
     $scope.getMessage = function() {
         exampleService.retrieveMessage($scope.name, "Neozaru").then(
@@ -18,5 +17,4 @@ NGMOD.ExampleCtrl = NGMOD.controller('ExampleCtrl', function ($scope, exampleSer
             }
         );
     }
-
-});
+}]);
