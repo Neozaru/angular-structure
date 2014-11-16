@@ -17,8 +17,12 @@
     "webdriver-manager": "^1.0.0"
   },
   "scripts": {
-    "test": "node_modules/karma-cli/bin/karma start karma.conf.js",
-    "start": "node_modules/http-server/bin/http-server -a localhost -p 8000"
+    "test": "node_modules/karma-cli/bin/karma start karma.conf.js --single-run",
+    "start": "node_modules/http-server/bin/http-server -a localhost -p 8000",
+    "update-webdriver": "./node_modules/webdriver-manager/bin/webdriver-manager update",
+    "functional": "node_modules/protractor/bin/protractor protractor.conf.js",
+    "configure": "npm run update-webdriver",
+    "test-all": "npm run configure && npm run test && npm run functional"
   },
   "repository": {
     "type": "git",
