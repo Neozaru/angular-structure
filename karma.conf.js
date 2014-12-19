@@ -6,19 +6,22 @@ module.exports = function(config) {
     basePath: '',
 
     // frameworks to use
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['requirejs', 'mocha', 'sinon-chai'],
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'app/config/module.js',
-      'app/**/*.js',
-      'app/common/components/example_input/*.js',
-      'test/unit/**/*.mocha.js',
-      'test/integration/**/*.mocha.js'
+      {pattern: 'bower_components/angular/angular.js', included: false},
+      {pattern: 'bower_components/angular-resource/angular-resource.js', included: false},
+      {pattern: 'bower_components/angular-mocks/angular-mocks.js', included: false},
+      {pattern: 'bower_components/angular-ui-router/release/angular-ui-router.js', included: false},
+      {pattern: 'bower_components/requirejs/require.js', included: false},
+      {pattern: 'bower_components/angularAMD/angularAMD.js', included: false},
+      {pattern: 'app/app.js', included: false},
+      {pattern: 'app/**/*.js', included: false},
+      {pattern: 'app/common/components/example_input/*.js', included: false},
+      {pattern: 'test/**/*.mocha.js', included: false},
+      {pattern: 'require-common.js', included: false},
+      {pattern: 'test-main.js', included: true},
     ],
 
     // list of files to exclude

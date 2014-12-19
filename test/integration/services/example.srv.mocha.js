@@ -1,20 +1,23 @@
-describe('example service test', function() {
+define(['angular-mocks'], function(mocks) {
 
-  var srv, $httpBackend;
+  describe('example service test', function() {
 
-  beforeEach(module('myApp'));
+    var srv, $httpBackend;
 
-  beforeEach(inject(function($rootScope) {
-    inject(function($injector) {
-      $httpBackend = $injector.get('$httpBackend');
-      srv = $injector.get('exampleService');
+    beforeEach(mocks.module('myApp'));
+
+    beforeEach(inject(function($rootScope) {
+      inject(function($injector) {
+        $httpBackend = $injector.get('$httpBackend');
+        srv = $injector.get('exampleService');
+      });
+    }));
+
+    it('should return message', function(){
+      $httpBackend.expectGET('http://foaas.herokuapp.com/linus/foo/bar').respond();
+      srv.retrieveMessage('foo', 'bar');
+      $httpBackend.flush();
     });
-  }));
 
-  it('should return message', function(){
-    $httpBackend.expectGET('http://foaas.herokuapp.com/linus/foo/bar').respond();
-    srv.retrieveMessage('foo', 'bar');
-    $httpBackend.flush();
   });
-
 });
