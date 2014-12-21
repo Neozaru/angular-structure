@@ -2,7 +2,7 @@ exports.config = {
   allScriptsTimeout: 11000,
 
   specs: [
-    'test/functional/**/*.js'
+    'app/**/*.ft.js'
   ],
 
   capabilities: {

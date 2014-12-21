@@ -25,4 +25,4 @@ define(['angular-mocks', 'exampleComponent'], function(mocks) {
     });
 
   });
-})
+});

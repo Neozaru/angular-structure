@@ -19,7 +19,6 @@ module.exports = function(config) {
       {pattern: 'app/app.js', included: false},
       {pattern: 'app/**/*.js', included: false},
       {pattern: 'app/common/components/example_input/*.js', included: false},
-      {pattern: 'test/**/*.mocha.js', included: false},
       {pattern: 'require-common.js', included: false},
       {pattern: 'test-main.js', included: true},
     ],

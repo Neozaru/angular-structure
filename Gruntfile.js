@@ -4,12 +4,12 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             min: {
-                files: grunt.file.expandMapping(['app/**/*.js'], 'build/', {
+                files: grunt.file.expandMapping(['app/**/*.js', '!app/**/*.mocha.js', '!app/**/*.ft.js'], 'build/', {
                     rename: function(destBase, destPath) {
                         return destBase + destPath.replace('.js', '.min.js');
                     }
                 })
-            },
+            }
         },
         copy: {
             main: {
