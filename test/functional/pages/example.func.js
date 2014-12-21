@@ -1,4 +1,3 @@
-
 beforeEach(function() {
 	browser.get('/');
 });

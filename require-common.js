@@ -12,8 +12,7 @@ define([], function() {
             'app': 'app/app',
 
             /* I chose to declare each Controller/Service/Directive here, 
-               so I don't need to use path when requiring them in app and tests.
-               */
+               so I don't need to use path when requiring them in app and tests. */
             // Controllers
             'exampleCtrl': 'app/pages/example/example.ctrl',
 
@@ -37,5 +36,5 @@ define([], function() {
             'exports':'angular.mock'
             }
         }
-    }
+    };
 });

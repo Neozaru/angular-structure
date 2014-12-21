@@ -10,9 +10,9 @@ define(['app'], function(app) {
                 scope.count = 0;
                 scope.increment = function() {
                     scope.count++;
-                }
+                };
 
             }
-        }
+        };
     }]);
 });

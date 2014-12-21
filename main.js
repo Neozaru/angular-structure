@@ -6,4 +6,4 @@ require(['require-common'], function(common) {
 
     deps: ['app']
   });
-})
+});
