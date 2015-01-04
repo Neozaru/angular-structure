@@ -17,7 +17,7 @@ define(['app', 'exampleService', 'exampleComponent'], function(app) {
                     $scope.lastError = "HTTP error : " + error;
                 }
             );
-        }
+        };
     }]);
 
 });

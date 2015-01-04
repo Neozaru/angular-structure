@@ -11,5 +11,8 @@
     "underscore": "*",
     "angular-ui-router": "0.2",
     "angularAMD": "~0.2.1"
+  },
+  "devDependencies": {
+    "requirejs-text": "~2.0.12"
   }
 }

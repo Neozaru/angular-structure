@@ -6,11 +6,10 @@ define(['angular-mocks', 'exampleComponent'], function(mocks) {
 
     beforeEach(mocks.module('myApp'));
 
-    beforeEach(inject(function($rootScope, $compile, $httpBackend) {
+    beforeEach(mocks.inject(function($rootScope, $compile, $httpBackend) {
       $httpBackend.expectGET().respond("<span></span>");
       element = angular.element('<div data-example-input="" data-value="value"></div>');
       $compile(element)($rootScope);
-      $httpBackend.flush();
     }));
 
     it('should initialize correctly', function(){
@@ -25,4 +24,4 @@ define(['angular-mocks', 'exampleComponent'], function(mocks) {
     });
 
   });
-})
+});
