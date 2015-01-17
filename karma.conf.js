@@ -6,7 +6,7 @@ module.exports = function(config) {
     basePath: '',
 
     // frameworks to use
-    frameworks: ['requirejs', 'mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'requirejs', 'sinon-chai'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -17,6 +17,8 @@ module.exports = function(config) {
       {pattern: 'bower_components/requirejs/require.js', included: false},
       {pattern: 'bower_components/requirejs-text/text.js', included: false},
       {pattern: 'bower_components/angularAMD/angularAMD.js', included: false},
+      {pattern: 'node_modules/chai/chai.js', included: false},
+      {pattern: 'node_modules/chai-as-promised/lib/chai-as-promised.js', included: false},
       {pattern: 'app/app.js', included: false},
       {pattern: 'app/**/*.js', included: false},
       {pattern: 'app/**/*.html', included: false},

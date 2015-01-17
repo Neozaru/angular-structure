@@ -18,16 +18,23 @@ define([], function() {
 
             // Services
             'exampleService': 'app/common/services/example.srv',
+            'usersService': 'app/common/services/users.srv',
 
             // Components
             'exampleComponent': 'app/common/components/example_input/example_input.drv',
-            'exampleComponentTpl': 'app/common/components/example_input/example_input.html'
+            'exampleComponentTpl': 'app/common/components/example_input/example_input.html',
+            'formRegister': 'app/common/components/form_register/form_register.drv',
+            'formRegisterTpl': 'app/common/components/form_register/form_register.html',
+
+            'chai': 'node_modules/chai/chai',
+            'chai-as-promised': 'node_modules/chai-as-promised/lib/chai-as-promised'
         },
         shim: {
           'angular': {
             exports: 'angular',
             deps: ['require-text']
           },
+          // 'chai-as-promised': ['chai'],
           'angular-route': ['angular'],
           'angularAMD': ['angular'],
           'ngload': ['angularAMD'],

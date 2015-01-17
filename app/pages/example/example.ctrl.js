@@ -1,6 +1,6 @@
-define(['app', 'exampleService', 'exampleComponent'], function(app) {
+define(['app', 'exampleService', 'usersService', 'formRegister', 'exampleComponent'], function(app) {
 
-    return app.controller('exampleCtrl', ['$scope', 'exampleService', function ($scope, exampleService) {
+    return app.controller('exampleCtrl', ['$scope', 'exampleService', 'usersService', function ($scope, exampleService, usersService) {
         $scope.messages = [];
         $scope.lastError = "";
 
@@ -15,6 +15,17 @@ define(['app', 'exampleService', 'exampleComponent'], function(app) {
                 },
                 function err(error) {
                     $scope.lastError = "HTTP error : " + error;
+                }
+            );
+        };
+
+        $scope.register = function(email, password, username) {
+            usersService.create(email, password, username).then(
+                function(res) {
+                    // NOPATM
+                },
+                function(err) {
+                    $scope.lastError = err.status;
                 }
             );
         };
