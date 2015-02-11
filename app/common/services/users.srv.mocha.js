@@ -1,7 +1,7 @@
 define(['angular-mocks', 'chai', 'usersService'], function(mocks, chai) {
 
   describe('users service test', function() {
-    var usersSrv, $httpBackend;
+    var usersSrv, $httpBackend, rootScope;
 
     beforeEach(mocks.module('myApp'));
 
@@ -9,22 +9,15 @@ define(['angular-mocks', 'chai', 'usersService'], function(mocks, chai) {
       inject(function($injector) {
         $httpBackend = $injector.get('$httpBackend');
         usersSrv = $injector.get('usersService');
+        rootScope = $rootScope
       });
     }));
 
     it('should get user and return promises', function(done) {
       $httpBackend.expectGET('/api/users/1')
         .respond({"email": "foo"});
-      usersSrv.get(1)
-        .then(function(res) { 
-          expect(res).to.have.property("email", "foo");
-        })
-        .catch(function(err) {
-          done(err);
-        })
-        .finally(function() {
-          done();
-        });
+      chai.expect(usersSrv.get(1)).to.eventually.have.property("email","foo").notify(done);
+
       $httpBackend.flush();
     });
 
@@ -38,23 +31,28 @@ define(['angular-mocks', 'chai', 'usersService'], function(mocks, chai) {
         .respond({"email": "foo"});
       chai.expect(usersSrv.create("foo", "bar", "neozaru")).to.eventually.have.property("email","foo").notify(done);
       $httpBackend.flush();
-
     });
 
-    it('should fail if no argument', function() {
+    it('should fail if no argument', function(done) {
 
-      usersSrv.create()
-        .then(function(res) { 
-          done(res);
-        })
-        .catch(function(err) {
-          expect(err).to.have.property("code", 400);
-          done();
-        })
-        .finally(function() {
-          done();
-        });
+      {
+        var userPromise = usersSrv.create();
+        chai.expect(userPromise).to.eventually.rejected.with.property("code", 400);
+        rootScope.$apply();
+      }
 
+      {
+        var userPromise = usersSrv.create("foo");
+        chai.expect(userPromise).to.eventually.rejected.with.property("code", 400);
+        rootScope.$apply();
+      }
+
+
+      {
+        var userPromise = usersSrv.create("", "bar");
+        chai.expect(userPromise).to.eventually.rejected.with.property("code", 400).notify(done);
+        rootScope.$apply();
+      }
 
     });
 

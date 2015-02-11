@@ -1,17 +1,30 @@
-<h2>Example Controller</h2>
+<div notif-bar getter="notifGetter"></div>
+<div id="main" ng-init="doAction();">
+	<h2>Home Controller</h2>
 
+	<button ui-sref=".">Home</button>
 
-<h3>Embedded component/directive here</h3>
+	<div ng-switch="isLogged()">
+		<span ng-switch-when="false">
+			<button ui-sref=".login">Login</button>
+			<button ui-sref=".register">Register</button>
+		</span>
+		<span ng-switch-default>
+			Welcome, {{getUser().email}}
+			<button ng-click="logout()">Logout</button>
+		</span>
+	</div>
 
-<p>
-    <div data-form-register callback="register" password-min-length="8"></div>
-</p>
-<div data-example-input="" data-value="value"></div>
+	<span ui-view>
 
+	<h3>Embedded component/directive here</h3>
+		<div data-example-input="" data-value="value"></div>
 
-<h3>Call to a service here</h3>
+		<h3>Call to a service here</h3>
 
-<input type="text" data-ng-model="name"/>
-<button ng-click="getMessage()">Request service as {{name}}</button>
-<div ng-if="lastError != ''" style="color:red;">{{lastError}}</div>
-<div ng-repeat="msg in messages track by $index">{{msg}}<br/>---</div>
+		<input type="text" data-ng-model="name"/>
+		<button ng-click="getMessage()">Request service as {{name}}</button>
+		<div ng-if="lastError != ''" style="color:red;">{{lastError}}</div>
+		<div ng-repeat="msg in messages track by $index">{{msg}}<br/>---</div>
+	</span>
+</div>

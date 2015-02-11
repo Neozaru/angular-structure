@@ -1,6 +1,6 @@
-define(['app', 'exampleService', 'usersService', 'formRegister', 'exampleComponent'], function(app) {
+define(['app', 'exampleService', 'usersService', 'authenticationService', 'notificationsService', 'exampleComponent', 'notifBar'], function(app) {
 
-    return app.controller('exampleCtrl', ['$scope', 'exampleService', 'usersService', function ($scope, exampleService, usersService) {
+    return app.controller('exampleCtrl', ['$scope', '$location', 'exampleService', 'usersService', 'authenticationService', 'notificationsService', function ($scope, $location, exampleService, usersService, authenticationService, notificationsService) {
         $scope.messages = [];
         $scope.lastError = "";
 
@@ -19,16 +19,43 @@ define(['app', 'exampleService', 'usersService', 'formRegister', 'exampleCompone
             );
         };
 
-        $scope.register = function(email, password, username) {
-            usersService.create(email, password, username).then(
-                function(res) {
-                    // NOPATM
-                },
-                function(err) {
-                    $scope.lastError = err.status;
-                }
-            );
+        $scope.getUser = authenticationService.getUser;
+
+        $scope.isLogged = function() { 
+            return authenticationService.isAuthenticated(); 
         };
+
+        $scope.logout = function() {
+            return authenticationService.logout();
+        };
+
+        $scope.onActivated = function(login_info) {
+            // TODO notification bar
+            console.log("Activated");
+            console.log(login_info);
+            authenticationService.putLoginInfo(login_info);
+        }
+
+        $scope.doAction = function() {
+            notificationsService.add({text: "lol", type: "foo"})
+            console.log("lol")
+            var params = $location.search();
+            if (params.action) {
+                if (params.action === "activate" && params.userid && params.token) {
+                    usersService.activate(params.userid, params.token).then(
+                        function(login_info) {
+                            $scope.onActivated(login_info);
+                        },
+                        function(error) {
+                            console.warn(error);
+                        }
+                    );
+                }
+            }
+        };
+
+        $scope.notifGetter = notificationsService.get;
+
     }]);
 
 });

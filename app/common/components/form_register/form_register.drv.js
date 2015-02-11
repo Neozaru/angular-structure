@@ -3,7 +3,7 @@ define(['app', 'require-text!formRegisterTpl'], function(app, template) {
     return app.directive('formRegister', [function () {
         return {
             restrict: 'A',
-            scope: {callback: '=', passwordMinLength: '@'},
+            scope: {callback: '=', passwordMinLength: '@', errorsFile: '@'},
             template: template,
             link: function (scope, element, attr) {
                 scope.user = {};
