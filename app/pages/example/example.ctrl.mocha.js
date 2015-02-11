@@ -9,9 +9,9 @@ define(['angular-mocks', 'exampleCtrl'], function(mocks) {
 
     var stubService = {
       ok: true,
-      retrieveMessage = function(name, from) {
+      retrieveMessage: function(name, from) {
         var _this = this;
-        return $q(function(resolve, reject) {
+        return q(function(resolve, reject) {
           if (_this.ok) {
             resolve({"message": "Hello to " + name + " from " + from});
           }
@@ -49,7 +49,6 @@ define(['angular-mocks', 'exampleCtrl'], function(mocks) {
       location = $location;
       location.search({});
       scope = $rootScope.$new();
-
 
       mockAuthenticationService.putLoginInfo.reset();
       mockUsersService.activate.reset();
