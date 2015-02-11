@@ -40,6 +40,20 @@ define(['angular-mocks', 'formRegister'], function(mocks) {
       expect(element.find("button").attr("disabled")).to.equal("disabled");
     });
 
+    it('should have default password minimal length of 6', function() {
+      element = angular.element('<div data-form-register="" callback="stubcallback"></div>');
+      compile(element)(scope);
+      scope.$digest();
+      
+      element.isolateScope().user = {email: "foo@bar.42", password: "123456"}
+      scope.$digest();
+      expect(element.find("button").attr("disabled")).to.not.be.ok;
+
+      element.isolateScope().user = {email: "foo@bar.42", password: "12345"}
+      scope.$digest();
+      expect(element.find("button").attr("disabled")).to.equal("disabled");
+    });
+
 
     it("should trigger callback correctly", function() {
       scope.stubcallback = sinon.spy();
