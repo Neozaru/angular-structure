@@ -61,6 +61,10 @@ define(['angular-mocks', 'exampleCtrl'], function(mocks) {
         expect(scope.lastError).to.equal("HTTP error : Batman error");
       });
 
+      it('should perform action', function() {
+        scope.doAction();
+      });
+
     });
 
   });
