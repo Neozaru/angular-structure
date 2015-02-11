@@ -29,22 +29,18 @@ define(['app', 'exampleService', 'usersService', 'authenticationService', 'notif
             return authenticationService.logout();
         };
 
-        $scope.onActivated = function(login_info) {
-            // TODO notification bar
-            console.log("Activated");
-            console.log(login_info);
+        $scope.onAccountActivated = function(login_info) {
             authenticationService.putLoginInfo(login_info);
+            notificationsService.add({text: "Your account has been successfully activated"});
         }
 
         $scope.doAction = function() {
-            notificationsService.add({text: "lol", type: "foo"})
-            console.log("lol")
             var params = $location.search();
             if (params.action) {
                 if (params.action === "activate" && params.userid && params.token) {
                     usersService.activate(params.userid, params.token).then(
                         function(login_info) {
-                            $scope.onActivated(login_info);
+                            $scope.onAccountActivated(login_info);
                         },
                         function(error) {
                             console.warn(error);
