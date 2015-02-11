@@ -38,19 +38,18 @@ define([], function() {
             'notifBar': 'app/common/components/notifbar/notifbar.drv',
             'notifBarTpl': 'app/common/components/notifbar/notifbar.html',
 
-            'chai': 'node_modules/chai/chai',
-            'chai-as-promised': 'node_modules/chai-as-promised/lib/chai-as-promised',
-
             'configJson': 'config.json',
-            'config': 'config'
+            'config': 'config',
+
+            /* Will not be a dependency in web app */
+            'chai': 'node_modules/chai/chai',
+            'chai-as-promised': 'node_modules/chai-as-promised/lib/chai-as-promised'
         },
         shim: {
           'angular': {
             exports: 'angular',
             deps: ['require-text']
           },
-          // 'chai-as-promised': ['chai'],
-          // 'angular-route': ['angular'],
           'angularAMD': ['angular'],
           'ngload': ['angularAMD'],
           'angular-resource': ['angular'],

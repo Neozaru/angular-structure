@@ -10,16 +10,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'bower_components/angular/angular.js', included: false},
-      {pattern: 'bower_components/angular-resource/angular-resource.js', included: false},
-      {pattern: 'bower_components/angular-mocks/angular-mocks.js', included: false},
-      {pattern: 'bower_components/angular-messages/angular-messages.js', included: false},
-      {pattern: 'bower_components/angular-ui-router/release/angular-ui-router.js', included: false},
-      {pattern: 'bower_components/requirejs/require.js', included: false},
-      {pattern: 'bower_components/requirejs-text/text.js', included: false},
-      {pattern: 'bower_components/angularAMD/angularAMD.js', included: false},
-      {pattern: 'bower_components/angular-jwt/dist/angular-jwt.js', included: false},
-      {pattern: 'bower_components/angular-local-storage/dist/angular-local-storage.js', included: false},
+      {pattern: 'bower_components/**/*.js', included: false},
       {pattern: 'node_modules/chai/chai.js', included: false},
       {pattern: 'node_modules/chai-as-promised/lib/chai-as-promised.js', included: false},
       {pattern: 'app/app.js', included: false},
@@ -38,8 +29,10 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type: 'text-summary',
-      dir: 'coverage/'
+      reporters:[
+        {type: 'html', dir:'coverage/'},
+        {type: 'text-summary'}
+      ],
     },
 
     // test results reporter to use
