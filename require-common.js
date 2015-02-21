@@ -13,7 +13,13 @@ define([], function() {
             'angular-jwt': 'bower_components/angular-jwt/dist/angular-jwt',
             'angular-local-storage': 'bower_components/angular-local-storage/dist/angular-local-storage',
             'angular-messages': 'bower_components/angular-messages/angular-messages',
+            'angulartics': 'bower_components/angulartics/dist/angulartics.min',
+            'angulartics-piwik': 'bower_components/angulartics/dist/angulartics-piwik.min',
+            'angulartics-scroll': 'bower_components/angulartics/src/angulartics-scroll',
             'app': 'app/app',
+
+            'jquery': 'bower_components/jquery/dist/jquery',
+            'jquery-waypoints': 'bower_components/jquery-waypoints/lib/jquery.waypoints',
             /* I chose to declare each Controller/Service/Directive here, 
                so I don't need to use path when requiring them in app and tests. */
             // Controllers
@@ -51,6 +57,10 @@ define([], function() {
             deps: ['require-text']
           },
           'angularAMD': ['angular'],
+          'angulartics': ['angularAMD'],
+          'angulartics-piwik': ['angulartics'],
+          'jquery-waypoints': ['jquery'],
+          'angulartics-scroll': ['angulartics-piwik', 'jquery-waypoints'],
           'ngload': ['angularAMD'],
           'angular-resource': ['angular'],
           'angular-ui-router': ['angular'],

@@ -7,6 +7,26 @@
             <!-- Config -->
             <script data-main="main.js" src="bower_components/requirejs/require.js"></script>
 
+
+            <!-- Piwik -->
+            <!-- Please, edit 'test.local/piwiki' piwik_server variable and img.src -->
+            <script type="text/javascript">
+              var piwik_server = "test.local/piwik/";
+              var _paq = _paq || [];
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="//"+piwik_server;
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', 1]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+            <noscript><p><img src="//test.local/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+            <!-- End Piwik Code -->
+
+
         <title>Angular Structure Example</title>
 
     </head>

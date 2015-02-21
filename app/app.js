@@ -1,11 +1,14 @@
-define(['angularAMD', 'angular-ui-router', 'angular-resource', 'angular-messages', 'angular-jwt', 'angular-local-storage'], function (angularAMD) {
+define(['angularAMD', 'angular-ui-router', 'angular-resource', 'angular-messages', 'angular-jwt', 'angular-local-storage', 'angulartics-piwik', 'angulartics-scroll'], function (angularAMD) {
 
     var app = angular.module('myApp', [
         'ngResource',
         'ngMessages',
         'ui.router',
         'angular-jwt',
-        'LocalStorageModule'
+        'LocalStorageModule',
+        'angulartics',
+        'angulartics.piwik',
+        'angulartics.scroll'
     ]);
 
     app.config(function($httpProvider, jwtInterceptorProvider, localStorageServiceProvider) {
