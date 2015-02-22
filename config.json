@@ -1,3 +1,4 @@
 {
-	"errorsFile": "app/common/errors.html"
+	"errorsFile": "app/common/errors.html",
+	"piwikServer": "test.local/piwik/"
 }

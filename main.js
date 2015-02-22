@@ -7,3 +7,5 @@ require(['require-common'], function(common) {
     deps: ['app']
   });
 });
+
+require(['piwik-main']);
