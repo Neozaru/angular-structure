@@ -1,14 +1,14 @@
 require(['/base/require-common.js'], function(common) {
 
     /* Tells Karma to use only .mocha.js files as test files */
-    var tests = [];
-    for (var file in window.__karma__.files) {
-        if (window.__karma__.files.hasOwnProperty(file)) {
-            if (/.*\.mocha\.js$/i.test(file)) {
-                tests.push(file);
-            }
-        }
-    }
+  var tests = [];
+  for (var file in window.__karma__.files) {
+      if (window.__karma__.files.hasOwnProperty(file)) {
+          if (/.*\.mocha\.js$/i.test(file)) {
+              tests.push(file);
+          }
+      }
+  }
 
   require.config({
     baseUrl: '/base/',
@@ -21,7 +21,7 @@ require(['/base/require-common.js'], function(common) {
 
 
     /* Ugly hack to make "chai-as-promised" working */
-    require(['chai', 'chai-as-promised'], function(chai, chap) {
+  require(['chai', 'chai-as-promised'], function(chai, chap) {
 
     if ( ! Function.prototype.bind) {
         Function.prototype.bind = function bind(that) { // .length is 1

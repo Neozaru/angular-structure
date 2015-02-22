@@ -27,6 +27,12 @@ define(['angularAMD', 'angular-ui-router', 'angular-resource', 'angular-messages
       $httpProvider.interceptors.push('jwtInterceptor');
     });
 
+    /* Angulartics configuration */
+    app.config(function ($analyticsProvider) {
+      // turns off to avoid automatic tracking in unit tests
+      $analyticsProvider.firstPageview(false);
+    });
+
     app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $injector) {
       $urlRouterProvider.otherwise('/home');
       $stateProvider
